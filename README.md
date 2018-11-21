@@ -1,2 +1,0 @@
-# hashcat
-Laravel_project
