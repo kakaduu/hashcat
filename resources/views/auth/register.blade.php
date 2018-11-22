@@ -63,9 +63,10 @@
 
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
-
                             <div class="col-md-6">
                                 <input id="avatar" type="text" class="form-control" name="avatar" required>
+                                    @if ($errors->has('avatar'))
+                                    {{ $errors->first('avatar') }} @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -73,6 +74,9 @@
 
                             <div class="col-md-6">
                                 <input id="about" type="text" class="form-control" name="about" required>
+                                @if ($errors->has('about'))
+                                {{ $errors->first('about') }}
+                                @endif
                             </div>
                         </div>
 

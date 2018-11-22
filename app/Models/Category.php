@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Hashcat\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $fillable = ['name', 'description'];
     public function topics(){
-        return $this->hasMany('App\Models\Topic');
+        return $this->hasMany('Hashcat\Models\Topic');
     }
 
     public function countTopicsByCategory(){

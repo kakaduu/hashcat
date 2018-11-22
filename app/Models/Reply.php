@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Hashcat\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

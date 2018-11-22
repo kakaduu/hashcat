@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace Hashcat\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $fillable = ['name', 'email', 'avatar', 'username', 'password', 'about'];
+    protected $fillable = ['name', 'email', 'avatar', 'password', 'about'];
 
     public function news(){
-        return $this->hasMany('App\Models\News');
+        return $this->hasMany('Hashcat\Models\News');
     }
 
     public function topics(){
-        return $this->hasMany('App\Models\Topic');
+        return $this->hasMany('Hashcat\Models\Topic');
     }
 
     public function replies(){
-        return $this->hasMany('App\Models\Reply');
+        return $this->hasMany('Hashcat\Models\Reply');
     }
 }

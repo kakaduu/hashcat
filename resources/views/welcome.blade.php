@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hashcat foorum</title>
+        <title>Hashcat forum</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -76,26 +76,25 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Hascat forum
                 </div>
-                <div class="row"> 
-                    <div class="col-md-3"> 
-                        
-                        <table class="table table-striped"> 
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <table class="table table-striped">
                             Categories
-                            @foreach ($categories as $c) 
-                            <tr>                                
-                               <td>{{$c->name}}</td> 
-                            </tr>    
-                            @endforeach   
-                        </table>    
-                        </div> 
+                            @foreach ($categories as $c)
+                            <tr>
+                               <td>{{$c->name}}</td>
+                            </tr>
+                            @endforeach
+                        </table>
+                        </div>
                     </div>
-    
-               
+
+
             </div>
         </div>
     </body>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Hashcat\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Hashcat\User;
+use Hashcat\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,7 +52,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            //'avatar' => 'required|string|max:255',
+            'avatar' => 'required|string|max:255',
+            'about' => 'required|string|max:255',
         ]);
     }
 
@@ -60,16 +61,16 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Hashcat\User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'avatar' => $data['avatar'],
-            'about' => $data['about'],
             'password' => Hash::make($data['password']),
+            'avatar' => $data['avatar'],
+            'about' => $data['about']
         ]);
     }
 }

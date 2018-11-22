@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Hashcat'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Hashcat\Providers\AppServiceProvider::class,
+        Hashcat\Providers\AuthServiceProvider::class,
+        // Hashcat\Providers\BroadcastServiceProvider::class,
+        Hashcat\Providers\EventServiceProvider::class,
+        Hashcat\Providers\RouteServiceProvider::class,
 
     ],
 

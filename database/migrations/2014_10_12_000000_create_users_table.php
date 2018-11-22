@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 255);
             $table->string('avatar', 100);
             $table->text('about');
-            $table->datetime('last_activity');
+            $table->datetime('last_activity')->nullable();
             $table->timestamp('created_date')->nullable();
             $table->rememberToken();
             $table->timestamps();

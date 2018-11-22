@@ -11,21 +11,26 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([ 
-            'name' => 'Hashcat Linux' 
-        ]); 
-        DB::table('categories')->insert([ 
-            'name' => 'Hashcat Windows' 
-        ]); 
-        DB::table('categories')->insert([ 
-            'name' => 'Database' 
-        ]); 
-        DB::table('categories')->insert([ 
-            'name' => 'Programming' 
-        ]); 
-        DB::table('categories')->insert([ 
-            'name' => 'Web' 
-        ]); 
+        DB::table('categories')->insert([
+            'name' => 'Tutorials',
+            'description' =>'Tutorials'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Benchmarks',
+            'description' =>'Bookmarks'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Python scripts',
+            'description' =>'Sripts.....'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Web&Hosting',
+            'description' =>'Best Hosting providers ecs'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Other',
+            'description' =>'Other'
+        ]);
 
     }
 }
