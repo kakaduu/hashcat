@@ -20,6 +20,12 @@ class Post extends Model
         return $this->hasMany('App\Post');
     }
 
+    public function getDateAttribute($value)
+    {
+        return $this->created_at->diffForHumans();
+    }
+
+
     public function countTopicsByCategory()
     {
     return $this->posts()->selectRaw('category_id, count(*) as topicCount')->groupBy('category_id');

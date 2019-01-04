@@ -14,11 +14,11 @@
                             <img class="img-fluid rounded" img style="width:50%" src="/storage/images/{{$post->image}}" alt="pic">
                                 <hr>
                                 <!-- Avatar -->
-                                <img style="width:10%" src="/storage/avatars/{{$post->user->avatar}}">
+                                <img style="width:10%" src="/storage/avatars/{{ $post->user->avatar }}">
                                 <!-- User/Date -->
-                                <small><i class="fas fa-user-secret"> Post by: {{$post->user->name}}</i>
-                                    <i class="fas fa-hourglass-half">, written on: {{$post->created_at}}</i>
-                                    <i class="fas fa-tag">, Category: {{$post->category->name}}</i> </small>
+                                <i class="fas fa-user-secret"> Post by: {{ $post->user->name }},</i>
+                                    <i class="fas fa-hourglass-half"> written on: {{ $post->date }},</i>
+                                    <i class="fas fa-tag"> category: {{ $post->category->name }}</i>
                                 <hr>
 
                         @endforeach

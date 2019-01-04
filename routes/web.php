@@ -18,8 +18,6 @@ Route::get('/category/{category}', ['uses' => 'PostsController@category', 'as' =
 
 //Route::get('/category/{id}', 'CategoryController@listPostsByID')->name('listPosts')->where('id', '[0-9]+');
 
-
-
 Route::resources([
     'posts' => 'PostsController',
     'news' => 'NewsController',
@@ -29,9 +27,6 @@ Route::resources([
 Route::get('profile', 'UserProfileController@show')->middleware('auth')->name('profile.show');
 Route::post('profile', 'UserProfileController@update_avatar')->middleware('auth')->name('profile.update');
 
-//Route::resource('posts', 'PostsController');
-//Route::resource('news', 'NewsController');
-//Route::resource('news', 'PagesController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
