@@ -1,9 +1,9 @@
 <?php
 
-namespace Hashcat\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use Hashcat\User;
-use Hashcat\Http\Controllers\Controller;
+use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -49,11 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'avatar' => 'required|string|max:255',
-            'about' => 'required|string|max:255',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'avatar' => 'image|nullable|max:1999'
         ]);
     }
 
@@ -61,16 +60,33 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Hashcat\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $request = app('request');
+
+        if($request->hasFile('avatar')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('avatar')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('avatar')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('avatar')->storeAs('public/avatars', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $data['avatar'],
-            'about' => $data['about']
+            'avatar' => $fileNameToStore,
         ]);
+
+        return $user;
     }
 }
