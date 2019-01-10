@@ -13,15 +13,19 @@ Route::get('/', 'PagesController@index');
 Route::get('/', 'NewsController@index')->name('news');
 
 Route::get('/', 'CategoryController@index')->name('categories');
-
 Route::get('/category/{category}', ['uses' => 'PostsController@category', 'as' => 'category']);
 
-//Route::get('/category/{id}', 'CategoryController@listPostsByID')->name('listPosts')->where('id', '[0-9]+');
+Route::post('comments', 'CommentsController@store')->name('comments.store');
+
+Route::get('search', 'SearchController@index')->name('search');
+Route::get('search','SearchController@result');
+Route::post('search','SearchController@search')->name('search');
 
 Route::resources([
     'posts' => 'PostsController',
     'news' => 'NewsController',
-    'categories' => 'CategoryController'
+    'categories' => 'CategoryController',
+    'comments' => 'CommentsController'
 ]);
 
 Route::get('profile', 'UserProfileController@show')->middleware('auth')->name('profile.show');

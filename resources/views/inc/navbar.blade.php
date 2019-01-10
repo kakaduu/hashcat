@@ -9,9 +9,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">News <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/posts">Posts</a>
-        </li>
+
       </ul>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -26,6 +24,9 @@
                     @endif
                 </li>
             @else
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>

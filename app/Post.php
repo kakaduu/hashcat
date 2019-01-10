@@ -25,6 +25,16 @@ class Post extends Model
         return $this->created_at->diffForHumans();
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+
+    public function reply()
+    {
+        return $this->hasMany('App\Reply');
+    }
 
     public function countTopicsByCategory()
     {

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
 use App\Post;
-use App\News;
+use App\Category;
 
-class PagesController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $title = 'Welcome To Hashcat Forum';
-        return view('pages.index')->with('title', $title);
+        //
     }
 
     /**
@@ -26,8 +26,7 @@ class PagesController extends Controller
      */
     public function create()
     {
-        $categories=\App\Category::all()->sortBy('name');
-        return view('posts.create', compact('categories'));
+        //
     }
 
     /**
@@ -38,7 +37,16 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'body'=>'required',
+        ]);
+   
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->id;
+    
+        Comment::create($input);
+   
+        return back();
     }
 
     /**

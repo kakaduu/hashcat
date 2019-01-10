@@ -22,22 +22,16 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //$category=\App\Category::where('id','=',$id)->first();
         $posts = Post::orderBy('created_at','desc')->paginate(3);
         $categories=\App\Category::with('posts')->get();
         return view('posts.index', ['posts' => $posts, 'categories'=>$categories]);
-
-        //return view('posts.index')->with('posts', $posts);
     }
 
     public function category($id)
     {
-        //$category=\App\Category::where('id','=',$id)->first();
         $posts = Post::where('category_id',$id)->paginate(3);
         $categories = \App\Category::with('posts')->get();
         return view('posts.index', ['posts' => $posts, 'categories'=>$categories]);
-
-        //return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -102,6 +96,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        //$reply = Reply::find($id);
         return view('posts.show')->with('post', $post);
     }
 

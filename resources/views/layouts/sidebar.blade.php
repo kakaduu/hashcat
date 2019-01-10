@@ -5,10 +5,12 @@
                     <h5 class="card-header">Search</h5>
                     <div class="card-body">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search..">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Search</button>
-                            </span>
+                            {!! Form::open(array('route' => 'search', 'class'=>'form navbar-form navbar-right searchform')) !!}
+                            {!! Form::text('search', null, array('required',
+                                            'class'=>'form-control', 'placeholder'=>'Search')) !!}
+                            <hr>
+                            {!! Form::submit('Search', array('class'=>'btn btn-danger')) !!}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

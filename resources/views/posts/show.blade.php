@@ -13,12 +13,30 @@
     <hr>
     @if(!Auth::guest())
         @if(Auth::user()->id == $post->user_id)
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
-
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-info">Edit</a>
+            <hr>
             {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
         @endif
     @endif
+    <hr />
+    <h4>Display Comments</h4>
+    <hr />
+    @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
+
+    <hr>
+    <h4>Add comment</h4>
+    <form method="post" action="{{ route('comments.store'   ) }}">
+        @csrf
+        <div class="form-group">
+            <textarea class="form-control" name="body"></textarea>
+            <hr>
+            <input type="hidden" name="post_id" value="{{ $post->id }}" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Add Comment" />
+        </div>
+    </form>
 @endsection
